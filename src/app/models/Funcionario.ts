@@ -1,6 +1,3 @@
-export interface Data {
-  data: Funcionario[];
-}
 
 export interface Funcionario {
   id: number;

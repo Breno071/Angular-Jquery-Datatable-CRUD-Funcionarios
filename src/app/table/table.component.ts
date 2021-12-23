@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
-import { EditarComponent } from '../editar/editar.component';
+import { DialogComponent } from '../deletarfuncionario/deletarfuncionario.component';
+import { EditarComponent } from '../editarfuncionario/editarfuncionario.component';
 import { Funcionario } from '../models/Funcionario';
 import { HttpService } from '../services/http.service';
 
@@ -13,6 +13,7 @@ import { HttpService } from '../services/http.service';
 export class TableComponent implements OnInit {
   funcionarios: Funcionario[] = [];
   dtOptions: DataTables.Settings = {};
+
   constructor(
     private httpService: HttpService, public dialog: MatDialog) {
     this.httpService.getFuncionarios().subscribe(data => {
@@ -26,7 +27,7 @@ export class TableComponent implements OnInit {
         });
       });
 
-    }, error => console.log(error));
+    }, error => alert("Erro ao carregar funcionarios! Verifique o servidor."));
   }
 
   ngOnInit(): void {

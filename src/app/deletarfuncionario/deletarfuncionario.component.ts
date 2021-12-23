@@ -8,8 +8,8 @@ interface FuncionarioDelete {
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  templateUrl: './deletarfuncionario.component.html',
+  styleUrls: ['./deletarfuncionario.component.css']
 })
 export class DialogComponent implements OnInit {
 

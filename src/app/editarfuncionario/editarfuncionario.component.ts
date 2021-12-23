@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Funcionario } from '../models/Funcionario';
 
@@ -11,8 +11,8 @@ interface FuncionarioEdit {
 
 @Component({
   selector: 'app-editar',
-  templateUrl: './editar.component.html',
-  styleUrls: ['./editar.component.css']
+  templateUrl: './editarfuncionario.component.html',
+  styleUrls: ['./editarfuncionario.component.css']
 })
 export class EditarComponent implements OnInit {
   form!: FormGroup;

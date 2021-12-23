@@ -9,8 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { RoutingModule } from './app.router';
-import { EditarComponent } from './editar/editar.component';
-import { DialogComponent } from './dialog/dialog.component';
+import { EditarComponent } from './editarfuncionario/editarfuncionario.component';
+import { DialogComponent } from './deletarfuncionario/deletarfuncionario.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CadastrarfuncionarioComponent } from './cadastrarfuncionario/cadastrarfuncionario.component';
 
