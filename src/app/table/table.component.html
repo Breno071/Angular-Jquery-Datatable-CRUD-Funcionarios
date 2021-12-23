@@ -5,7 +5,9 @@
 </script>
 
 <div class="tabela">
-  <button class="btncadastrar" mat-raised-button><a [routerLink]="[ '/cadastrar' ]">Cadastrar Funcionário</a></button>
+  <button class="btncadastrar" mat-raised-button>
+    <mat-icon style="color: white;">add</mat-icon><a [routerLink]="[ '/cadastrar' ]">Cadastrar Funcionário</a>
+  </button>
 
   <table id="funcionarios" class="display compact" style="width:100%">
     <thead>

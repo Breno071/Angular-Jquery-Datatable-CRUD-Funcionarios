@@ -1,1 +1,54 @@
-<p>cadastrarfuncionario works!</p>
+<h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Cadastrar funcionário</h2>
+<div class="container">
+  <form class="grid" [formGroup]="formGroup" (ngSubmit)="cadastrarFuncionario()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Sobrenome</mat-label>
+      <input matInput formControlName="sobrenome" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Gênero</mat-label>
+      <mat-select formControlName="genero" required="true">
+        <mat-option value="M">Masculino</mat-option>
+        <mat-option value="F">Feminino</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Cidade</mat-label>
+      <input matInput formControlName="cidade" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>País</mat-label>
+      <input matInput formControlName="pais" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Empresa</mat-label>
+      <input matInput formControlName="empresa" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Salário</mat-label>
+      <input matInput formControlName="salario" type="number" required>
+    </mat-form-field>
+
+
+    <button class="btnlistar" mat-raised-button>
+      <mat-icon style="color: white;">arrow_back</mat-icon><a [routerLink]="[ '/']"> Listar funcionários</a>
+    </button>
+
+
+    <button type="submit" class="btncadastrar" mat-raised-button>
+      <span>Cadastrar funcionário </span>
+      <mat-icon style="color: white">send</mat-icon>
+    </button>
+
+
+  </form>
+
+</div>

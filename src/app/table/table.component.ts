@@ -13,7 +13,8 @@ import { HttpService } from '../services/http.service';
 export class TableComponent implements OnInit {
   funcionarios: Funcionario[] = [];
   dtOptions: DataTables.Settings = {};
-  constructor(private httpService: HttpService, public dialog: MatDialog) {
+  constructor(
+    private httpService: HttpService, public dialog: MatDialog) {
     this.httpService.getFuncionarios().subscribe(data => {
       this.funcionarios = data
       $(function () {
@@ -56,8 +57,7 @@ export class TableComponent implements OnInit {
   editarFuncionario(id: number, funcionario: Funcionario) {
     this.httpService.editarFuncionario(id, funcionario).subscribe(data => {
       if (data > 0) {
-        this.funcionarios[this.funcionarios.findIndex(x => x.id == id)].id = id;
-        this.funcionarios[this.funcionarios.findIndex(x => x.id == id)] = funcionario;
+        window.location.reload();
         alert("Funcionario editado com sucesso!");
       }
     },
@@ -67,8 +67,8 @@ export class TableComponent implements OnInit {
   deletarFuncionario(id: number) {
     this.httpService.deletarFuncionario(id).subscribe(data => {
       if (data > 0) {
+        window.location.reload();
         alert("Funcionario deletado com sucesso!");
-        this.funcionarios.splice(this.funcionarios.findIndex(x => x.id == id), 1);
       }
 
     },

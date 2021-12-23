@@ -20,4 +20,8 @@ export class HttpService {
   editarFuncionario(id: number, funcionario: Funcionario): Observable<number> {
     return this.http.put<number>('http://localhost:5219/api/v1/funcionarios/' + id, funcionario);
   }
+
+  criarUsuario(funcionario: Funcionario): Observable<number> {
+    return this.http.post<number>('http://localhost:5219/api/v1/funcionarios', funcionario);
+  }
 }
