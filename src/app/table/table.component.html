@@ -4,42 +4,46 @@
   });
 </script>
 
-<table id="funcionarios" class="display" style="width:100%">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>Email</th>
-      <th>Gênero</th>
-      <th>Cidade</th>
-      <th>País</th>
-      <th>Empresa</th>
-      <th>Salário</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let funcionario of funcionarios">
-      <td>{{funcionario.id}}</td>
-      <td>{{funcionario.nome}}</td>
-      <td>{{funcionario.sobrenome}}</td>
-      <td>{{funcionario.email}}</td>
-      <td>{{funcionario.genero}}</td>
-      <td>{{funcionario.cidade}}</td>
-      <td>{{funcionario.pais}}</td>
-      <td>{{funcionario.empresa}}</td>
-      <td>R$ {{funcionario.salario.toFixed(2)}}</td>
-      <td>
-        <button mat-icon-button color="primary" (click)="editarFuncionario(funcionario.id, funcionario)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="deletarFuncionario(funcionario.id, funcionario.nome)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </td>
-    </tr>
+<div class="tabela">
+  <button class="btncadastrar" mat-raised-button><a [routerLink]="[ '/cadastrar' ]">Cadastrar Funcionário</a></button>
 
-  </tbody>
+  <table id="funcionarios" class="display compact" style="width:100%">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Email</th>
+        <th>Gênero</th>
+        <th>Cidade</th>
+        <th>País</th>
+        <th>Empresa</th>
+        <th>Salário</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let funcionario of funcionarios">
+        <td>{{funcionario.id}}</td>
+        <td>{{funcionario.nome}}</td>
+        <td>{{funcionario.sobrenome}}</td>
+        <td>{{funcionario.email}}</td>
+        <td>{{funcionario.genero}}</td>
+        <td>{{funcionario.cidade}}</td>
+        <td>{{funcionario.pais}}</td>
+        <td>{{funcionario.empresa}}</td>
+        <td>R$ {{funcionario.salario.toFixed(2)}}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="openDialogEdit(funcionario.id, funcionario)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="openDialogDelete(funcionario.id, funcionario.nome)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
 
-</table>
+    </tbody>
+
+  </table>
+</div>

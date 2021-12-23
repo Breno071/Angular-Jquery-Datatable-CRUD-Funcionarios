@@ -1,1 +1,44 @@
-<p>editar works!</p>
+<h1 mat-dialog-title>Editar funcionário {{data.funcionario.nome}}</h1>
+<ng-form mat-dialog-content [formGroup]="form" class="grid">
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="nome" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Sobrenome</mat-label>
+    <input matInput formControlName="sobrenome" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Gênero</mat-label>
+    <mat-select formControlName="genero" required>
+      <mat-option value="M">Masculino</mat-option>
+      <mat-option value="F">Feminino</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cidade</mat-label>
+    <input matInput formControlName="cidade" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>País</mat-label>
+    <input matInput formControlName="pais" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Empresa</mat-label>
+    <input matInput formControlName="empresa" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Salário</mat-label>
+    <input matInput formControlName="salario" required>
+  </mat-form-field>
+
+
+</ng-form>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Cancelar</button>
+  <button *ngIf="form.valid" mat-button cdkFocusInitial [mat-dialog-close]="form.value">Ok</button>
+</div>

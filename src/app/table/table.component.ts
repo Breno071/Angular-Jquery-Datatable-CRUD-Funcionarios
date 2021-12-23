@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 import { EditarComponent } from '../editar/editar.component';
-import { Data, Funcionario } from '../models/Funcionario';
+import { Funcionario } from '../models/Funcionario';
 import { HttpService } from '../services/http.service';
 
 @Component({
@@ -30,15 +31,47 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  editarFuncionario(id: number, funcionario: Funcionario) {
+  openDialogEdit(id: number, funcionario: Funcionario) {
     const dialogRef = this.dialog.open(EditarComponent, {
       width: '500px',
       data: { id: id, funcionario: funcionario }
     })
-    console.log(id, funcionario);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == undefined) return;
+      this.editarFuncionario(id, result);
+    })
   }
 
-  deletarFuncionario(id: number, nome: string) {
-    console.log(id, nome);
+  openDialogDelete(id: number, nome: string) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '500px',
+      data: { id: id, nome: nome }
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == undefined) return;
+      this.deletarFuncionario(result);
+    })
+  }
+
+  editarFuncionario(id: number, funcionario: Funcionario) {
+    this.httpService.editarFuncionario(id, funcionario).subscribe(data => {
+      if (data > 0) {
+        this.funcionarios[this.funcionarios.findIndex(x => x.id == id)].id = id;
+        this.funcionarios[this.funcionarios.findIndex(x => x.id == id)] = funcionario;
+        alert("Funcionario editado com sucesso!");
+      }
+    },
+      error => alert("Erro ao editar funcionario! Verifique o servidor."))
+  }
+
+  deletarFuncionario(id: number) {
+    this.httpService.deletarFuncionario(id).subscribe(data => {
+      if (data > 0) {
+        alert("Funcionario deletado com sucesso!");
+        this.funcionarios.splice(this.funcionarios.findIndex(x => x.id == id), 1);
+      }
+
+    },
+      error => alert("Erro ao deletar funcionario! Verifique o servidor."))
   }
 }
